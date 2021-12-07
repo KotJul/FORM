@@ -1,0 +1,107 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-container{
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .3);
+    box-sizing: border-box;/*включает в размер блока все отступы*/
+}
+h2{
+    text-align: center;
+    color: seagreen;
+
+}
+.input-container,
+.select-container{
+    position: relative;
+    margin-top: 15px;
+
+}
+
+.input-container input[type="text"],
+.input-container input[type="email"],
+.select-container select
+{/*только импуты с типом текст будут иметь эти стили*/
+    display: block;
+    width: 100%;
+    padding: 8px 7px 5px 7px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid darkorange;
+    font-style: 18px;
+    line-height: 22px;
+}
+
+.input-container label{
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: white;/*уберет перечеркнутый лайбл, т.е Имя*/
+    padding: 0px 3px;
+}
+.input-container input:focus{
+     color:tomato;
+}
+.select-container select{
+    appearance: none;/*убирает стандартные галочки*/
+    -webkit-appearance: none;
+}
+.checkbox-list{
+    margin-top: 15px;
+}
+.checkbox-container input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+}
+.checkbox-container label{
+    position: relative;
+    padding-left: 30px;
+    font-size: 18px;
+}
+.checkbox-container label::after,
+.checkbox-container label::before{
+   content: "";
+   position: absolute;
+   display: block;
+   border-radius: 5px;
+}
+.checkbox-container label::after{/*делаем квадратики слева*/
+    width: 22px;
+    height: 22px;
+    background: orange;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+.checkbox-container label::before{
+    width: 20px;
+    height: 20px;
+    top: 1px;
+    left: 1px;
+    background: olive;
+    z-index: 2;
+    opacity: 0;
+    transition: all .3s;
+}
+.checkbox-container{
+    margin-top: 7px;
+}
+.checkbox-container input[type="checkbox"]:checked + label::before{
+    opacity: 1;
+    transition: all .3s;
+}
