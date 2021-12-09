@@ -68,40 +68,95 @@ h2{
     appearance: none;
     -webkit-appearance: none;
 }
-.checkbox-container label{
-    position: relative;
-    padding-left: 30px;
-    font-size: 18px;
-}
-.checkbox-container label::after,
-.checkbox-container label::before{
-   content: "";
-   position: absolute;
-   display: block;
-   border-radius: 5px;
-}
-.checkbox-container label::after{/*делаем квадратики слева*/
-    width: 22px;
-    height: 22px;
-    background: orange;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
-}
-.checkbox-container label::before{
-    width: 20px;
-    height: 20px;
-    top: 1px;
-    left: 1px;
-    background: olive;
-    z-index: 2;
-    opacity: 0;
-    transition: all .3s;
-}
 .checkbox-container{
-    margin-top: 7px;
+    position: relative;
+    margin-top: 10px;
 }
-.checkbox-container input[type="checkbox"]:checked + label::before{
+.checkbox-container label{
+    padding-left: 45px;
+}
+.checkbox-container label::after{/*делаем овалы перед списком*/
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 40px;
+    height: 20px;
+    border: 1px solid rgb(250, 217, 30);
+    border-radius: 20px;
+    box-sizing: border-box;/*учитывает бордер*/
+}
+.checkbox-container label::before{/*делаем бегунок внутри овала*/
+    content: "";
+    position: absolute;
+    display: block;
+    width: 21px;
+    height: 21px;
+    background: rgb(250, 217, 30);
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+.checkbox-container input:checked + label::before{
+    left: 20px;
+    border: 1px solid orangered;
+    box-sizing: border-box;
+    transition: all .3s;
+    
+}
+.checkbox-container input:checked + label::after{
+    background: orangered;
+    transition: all .3s;
+    transition-delay: .2s;/*замедление бегунка*/
+}
+.radio-container label:hover svg path{
+    fill:red;
+}
+.radio-list{
+    margin-top: 15px;
+    display: flex;
+    justify-content: end;
+}
+.radio-container input[type="radio"]{/*только для инпута с типом радио*/
+    appearance: none;/*убирает точку у радио*/
+    -webkit-appearance: none;
+}
+.radio-container input:checked + label.icon-telegram svg path{
+    fill:#0088cc;/*меняем цвет для наших свг*/
+}
+.radio-container input:checked + label.icon-vp svg path{
+    fill:green;
+}
+.radio-container input:checked + label.icon-tel svg path{
+    fill:purple;
+}
+label{
+    cursor: pointer;
+}
+.checkbox-subContainer {
+    margin-top:10px;
+    opacity: 0;/*прозрачность*/
+    height: 0px;
+}
+.checkbox-subContainer textarea{
+    cursor: default;/*делаем обычный курсор мыши*/
+    resize: none;/*запрещаем полю текст ареа расширяться*/
+    border: 1px solid orange;
+    border-radius: 5px;
+    width: 100%;
+    height:100%;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 22px;
+}
+.checkbox-subContainer textarea:focus{
+    color: orangered;
+}
+#checkbox_5:checked~.checkbox-subContainer{/* при нажатии на доп.параметры появляеться скрытый текстареа*/
     opacity: 1;
+    height: 120px;
     transition: all .3s;
 }
